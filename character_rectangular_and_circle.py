@@ -54,7 +54,6 @@ def circle_move():
 
 
 while(True):
-    clear_canvas_now()
     rectangular_move()
     circle_move()
         
