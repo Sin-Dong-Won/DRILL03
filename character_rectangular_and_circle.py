@@ -51,8 +51,6 @@ while(True):
     circle_move()
     break
 
-
-
 close_canvas()
 
         
