@@ -11,52 +11,49 @@ Hei = 600
 
 Pi = (float)(math.radians(1))
 
+def render_screen(x, y):
+    clear_canvas_now()
+    grass.draw_now(400, 30)
+    character.draw_now(x, y)
+    delay(0.01)    
+
 def rectangular_move():
-    x = 0
-    y = 90
+    print('RECTANGLE')
 
-    while(x < 800):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.draw_now(x, y)
-        x = x + 5
-        delay(0.01)
-
-    while(y < 600):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.draw_now(x, y)
-        y = y + 5
-        delay(0.01)
-
-
-    while(x > 0):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.draw_now(x, y)
-        x = x - 5
-        delay(0.01)
-
-    while(y > 90):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.draw_now(x, y)
-        y = y - 5
-        delay(0.01)  
+    # bottom line
+    for x in range(50, 750 + 1, 10):
+        render_screen(x, 90)
+        
+    # right line
+    for y in range(90, 550 + 1, 10):
+        render_screen(750, y)
+            
+    # top line    
+    for x in range(750, 50 - 1, -10):
+        render_screen(x, 550)
+        
+    # left line
+    for y in range(550, 90 - 1, -10):
+        render_screen(50, y)    
 
 def circle_move():
-
-    for i in range(0, 360):
-        clear_canvas_now()
-        grass.draw_now(400, 30)
-        character.draw_now(math.sin(Pi * (180 - i)) * Wid / 2 + Wid / 2, math.cos(Pi * (180 - i)) * Hei / 2 + Hei / 2 + 90)
-        delay(0.01) 
+    print('CIRCLE')
+    
+    cx, cy, r = 400,300,200    
+    for deg in range(-90, 270 + 1, 5):
+        x =  cx + r * math.cos(deg / 360 * 2 * math.pi)
+        y =  cy + r * math.sin(deg / 360 * 2 * math.pi)
+        render_screen(x, y)
 
 
 while(True):
     rectangular_move()
     circle_move()
-        
+    break
+
+
+
+close_canvas()
 
         
     
